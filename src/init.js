@@ -1,41 +1,14 @@
-const { Configuration, OpenAIApi } = require("openai");
-const logger                       = require('./api/pino');
-require('dotenv').config();
+const express       = require('express');
+const bodyParser    = require('body-parser');
+const chatGPTRoutes = require('./routes/routes');
 
-const configuration = new Configuration({
-    apiKey: process.env.APIKEY,
+const app = express();
+
+// Configura o middleware body-parser para extrair o corpo da requisição
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/api', chatGPTRoutes);
+
+app.listen(3000, () => {
+    console.log('Server started on port 3000');
 });
-const openai = new OpenAIApi(configuration);
-
-const question = '';
-
-const data = {
-    model: "text-davinci-003",
-    prompt: question,
-    temperature: 0,
-    max_tokens: 7,
-};
-const conf = {
-    timeout: 15000,
-    headers: {
-        "Content-Type": "application/json",
-    },
-}
-
-const start = async () => {
-    try {
-        const response = await openai.createCompletion(data, conf);
-        console.log(`pergunta : ${question}`);
-        console.log(`Resposta : ${response.data.choices[0].text.trim()}`);
-    } catch (error) {
-        if (error.response) {
-            logger.error(error.response.status);
-            logger.error(error.response.data);
-        } else {
-            logger.error(error.message);
-        }
-    }
-    
-}
-start();
-
