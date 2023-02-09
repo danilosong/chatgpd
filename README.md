@@ -19,6 +19,11 @@ Inicie o servidor da API com o seguinte comando:
 
 `sudo node src/init.js`
 
+É necessário adicionar enviroment com api_token do chatgpt na raiz do projeto como `.env` exemplo:
+
+`APIKEY="sk-gUc..."`
+`pino="trace"`
+
 
 A API estará disponível em `http://localhost:3000`.
 
