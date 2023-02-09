@@ -22,6 +22,7 @@ Inicie o servidor da API com o seguinte comando:
 É necessário adicionar enviroment com api_token do chatgpt na raiz do projeto como `.env` exemplo:
 
 APIKEY="sk-gUc..."
+
 pino="trace"
 
 
