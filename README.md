@@ -61,4 +61,4 @@ Este projeto está aberto a contribuições de todos os interessados. Se você d
 
 ## Licença
 
-Este projeto está licenciado sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+Este projeto está licenciado sob a licença MIT. Veja o arquivo [LICENSE](https://platform.openai.com/docs/introduction) para mais detalhes.
