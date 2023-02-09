@@ -12,14 +12,14 @@ Este repositório contém uma API para interação com o modelo de linguagem de 
 Clone este repositório para sua máquina usando o comando git clone https://github.com/SEU-USUARIO/SEU-REPO.git.
 Acesse a pasta do projeto com o comando cd SEU-REPO.
 Instale as dependências do projeto com o comando npm install.
-Inicie o servidor da API com o comando npm start.
+Inicie o servidor da API com o comando sudo node src/init.js.
 
 
 ## Uso
 
 Inicie o servidor da API com o seguinte comando:
 
-npm start
+sudo node src/init.js
 
 
 A API estará disponível em `http://localhost:3000`.
