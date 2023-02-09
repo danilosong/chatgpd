@@ -31,7 +31,8 @@ exports.chatGptTxt = async (req, res) => {
     try {
         data.prompt = prompt;
         const response = await openai.createCompletion(data, conf);
-        return res.status(200).send(`Resposta : ${response.data.choices[0].text.trim()}`);
+        const resul    = { resposta : response.data.choices[0].text.trim() };
+        return res.status(200).send(resul);
     } catch (error) {
         if (error.response) {
             logger.error(error.response.status);
