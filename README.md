@@ -9,17 +9,15 @@ Este repositório contém uma API para interação com o modelo de linguagem de 
 
 ## Instalação
 
-Clone este repositório para sua máquina usando o comando git clone https://github.com/SEU-USUARIO/SEU-REPO.git.
-Acesse a pasta do projeto com o comando cd SEU-REPO.
-Instale as dependências do projeto com o comando npm install.
-Inicie o servidor da API com o comando sudo node src/init.js.
-
+Clone este repositório para sua máquina usando o comando `git clone https://github.com/danilosong/chatgpt.git`.
+Acesse a pasta do projeto com o comando `cd chatgpt`.
+Instale as dependências do projeto com o comando `npm install`.
 
 ## Uso
 
 Inicie o servidor da API com o seguinte comando:
 
-sudo node src/init.js
+`sudo node src/init.js`
 
 
 A API estará disponível em `http://localhost:3000`.
@@ -27,26 +25,35 @@ A API estará disponível em `http://localhost:3000`.
 ### Consultas de perguntas
 
 Para realizar uma consulta de perguntas, basta realizar uma requisição POST para a rota `http://localhost:3000/api/chat-txt` com o seguinte corpo:
-
+```JSON
 {
     "prompt": "Sua pergunta aqui"
 }
-
+```
 Em resposta, você receberá uma resposta do ChatGPT gerada automaticamente pelo modelo, no formato JSON, da seguinte maneira:
-
+```JSON
 {
   "resposta": "Não tenho preferência por cores, sou apenas um modelo de linguagem de AI."
 }
-
+```
 ### Geração de imagens
 
 Para realizar a geração de imagens, basta realizar uma requisição POST para a rota `http://localhost:3000/api/chat-img` com o seguinte corpo:
-
+```JSON
 {
-    "prompt": "Sua descrição aqui",
-    "n"     : 2, //default
-    "size"  : 1024x1024 //default
+    "created": "",
+    "n"     : 2, //default 2
+    "size"  : "1024x1024" //default 1024x1024
 }
+```
+Em resposta, você receberá uma resposta do ChatGPT gerada automaticamente pelo modelo, no formato JSON, da seguinte maneira:
+```JSON
+{
+  "created": "timestamp",
+  "url1": "https://example.com/image1.jpg",
+  "url2": "https://example.com/image2.jpg"
+}
+```
 
 Contribuição
 Este projeto está aberto a contribuições de todos os interessados. Se você deseja contribuir, basta abrir uma issue ou enviar um pull request.
