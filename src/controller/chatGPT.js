@@ -7,8 +7,6 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-// const question = 'quantos metros tem a torre eifel?';
-
 const data = {
     model: "text-davinci-003",
     temperature: 0.7,
@@ -24,12 +22,13 @@ const conf = {
     },
 }
 exports.chatGptTxt = async (req, res) => {
-    const { prompt } = req.body;
+    const { prompt, instruction } = req.body;
 
     if(!prompt) return res.status(400).send({ error: 'Prompt is empty' });
+    if(!instruction) return res.status(400).send({ error: 'Instruction is empty' });
 
     try {
-        data.prompt = prompt;
+        data.prompt = instruction + ' ' + prompt + '.';
         const response = await openai.createCompletion(data, conf);
         const resul    = { resposta : response.data.choices[0].text.trim() };
         return res.status(200).send(resul);
@@ -64,6 +63,31 @@ exports.chatGptImg = async (req, res) => {
             url1     : response.data.data[0].url,
             url2     : response.data.data[1].url
         }
+        return res.status(200).send(resul);
+    } catch (error) {
+        if (error.response) {
+            logger.error(error.response.status);
+            logger.error(error.response.data);
+            return res.status(400).send({ error: error.response.data });
+        } else {
+            logger.error(error.message);
+            return res.status(400).send({ error: error.message });
+        }
+    }
+};
+exports.chatGptTest = async (req, res) => {
+    const { prompt } = req.body;
+
+    if(!prompt) return res.status(400).send({ error: 'Prompt is empty' });
+
+    try {
+        const response = await openai.createEdit({
+            model: "text-davinci-edit-001",
+            input: prompt,
+            instruction: "rosa, vermelho e azul",
+        });
+        console.log(response.data)
+        const resul    = { resposta : response.data.choices[0].text.trim() };
         return res.status(200).send(resul);
     } catch (error) {
         if (error.response) {

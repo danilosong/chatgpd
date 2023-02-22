@@ -33,6 +33,7 @@ A API estará disponível em `http://localhost:3000`.
 Para realizar uma consulta de perguntas, basta realizar uma requisição POST para a rota `http://localhost:3000/api/chat-txt` com o seguinte corpo:
 ```JSON
 {
+    "instruction" : "Instrução para perguntar, para indução de resposta.",
     "prompt": "Sua pergunta aqui"
 }
 ```
